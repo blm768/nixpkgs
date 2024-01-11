@@ -35,19 +35,3 @@ sed -i "s/rev = \".\{40\}\"/rev = \"${VSCODE_COMMIT}\"/" "$ROOT/vscode.nix"
 SERVER_X64_LINUX_URL="https://update.code.visualstudio.com/commit:${VSCODE_COMMIT}/server-linux-x64/stable"
 SERVER_X64_LINUX_SHA256=$(nix-prefetch-url ${SERVER_X64_LINUX_URL})
 sed -i "s/sha256 = \".\{51,52\}\"/sha256 = \"${SERVER_X64_LINUX_SHA256}\"/" "$ROOT/vscode.nix"
-
-VSCODE_X64_DARWIN_URL="https://update.code.visualstudio.com/${VSCODE_VER}/darwin/stable"
-VSCODE_X64_DARWIN_SHA256=$(nix-prefetch-url ${VSCODE_X64_DARWIN_URL})
-sed -i "s/x86_64-darwin = \".\{52\}\"/x86_64-darwin = \"${VSCODE_X64_DARWIN_SHA256}\"/" "$ROOT/vscode.nix"
-
-VSCODE_AARCH64_LINUX_URL="https://update.code.visualstudio.com/${VSCODE_VER}/linux-arm64/stable"
-VSCODE_AARCH64_LINUX_SHA256=$(nix-prefetch-url ${VSCODE_AARCH64_LINUX_URL})
-sed -i "s/aarch64-linux = \".\{52\}\"/aarch64-linux = \"${VSCODE_AARCH64_LINUX_SHA256}\"/" "$ROOT/vscode.nix"
-
-VSCODE_AARCH64_DARWIN_URL="https://update.code.visualstudio.com/${VSCODE_VER}/darwin-arm64/stable"
-VSCODE_AARCH64_DARWIN_SHA256=$(nix-prefetch-url ${VSCODE_AARCH64_DARWIN_URL})
-sed -i "s/aarch64-darwin = \".\{52\}\"/aarch64-darwin = \"${VSCODE_AARCH64_DARWIN_SHA256}\"/" "$ROOT/vscode.nix"
-
-VSCODE_ARMV7L_LINUX_URL="https://update.code.visualstudio.com/${VSCODE_VER}/linux-armhf/stable"
-VSCODE_ARMV7L_LINUX_SHA256=$(nix-prefetch-url ${VSCODE_ARMV7L_LINUX_URL})
-sed -i "s/armv7l-linux = \".\{52\}\"/armv7l-linux = \"${VSCODE_ARMV7L_LINUX_SHA256}\"/" "$ROOT/vscode.nix"
