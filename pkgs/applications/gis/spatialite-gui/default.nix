@@ -19,6 +19,7 @@
 , proj
 , sqlite
 , virtualpg
+, wrapGAppsHook
 , wxGTK
 , xz
 , zstd
@@ -56,6 +57,7 @@ stdenv.mkDerivation rec {
     proj
     sqlite
     virtualpg
+    wrapGAppsHook
     wxGTK
     xz
     zstd
