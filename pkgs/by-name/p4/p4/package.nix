@@ -34,12 +34,12 @@ let
 in
 stdenv.mkDerivation (finalAttrs: {
   pname = "p4";
-  version = "2024.1/2596294";
+  version = "2026.1/2951233";
 
   src = fetchurl {
     # Upstream replaces minor versions, so use archived URL.
-    url = "https://web.archive.org/web/20240526153453id_/https://ftp.perforce.com/perforce/r24.1/bin.tools/p4source.tgz";
-    hash = "sha256-6+DOJPeVzP4x0UsN9MlZRAyusapBTICX0BuyvVBQBC8=";
+    url = "https://web.archive.org/web/20260604041619/https://ftp.perforce.com/perforce/r26.1/bin.tools/p4source.tgz";
+    hash = "sha256-Zp43EeGz8vZ+iY4CO9yMuz3jwapiA0M/DDMkX/uUu5A=";
   };
 
   postPatch = lib.optionalString stdenv.hostPlatform.isDarwin ''
