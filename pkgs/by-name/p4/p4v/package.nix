@@ -10,7 +10,7 @@ let
   # Upstream replaces minor versions, so use archived URLs.
   srcs = {
     x86_64-linux = fetchurl {
-      url = "https://web.archive.org/web/20260414052921/https://filehost.perforce.com/perforce/r26.1/bin.linux26x86_64/p4v.tgz";
+      url = "https://web.archive.org/web/20261028203041/https://filehost.perforce.com/perforce/r26.3/bin.linux26x86_64/p4v.tgz";
       sha256 = "sha256-89Xz9dxAeLGOOr90K0CdlxjrfIf9vUmyZV3tzWspWdQ=";
     };
     aarch64-darwin = fetchurl {
@@ -27,7 +27,7 @@ let
 in
 mkDerivation {
   pname = "p4v";
-  version = "2026.1/2933292";
+  version = "2026.3/3115448";
 
   src =
     srcs.${stdenv.hostPlatform.system} or (throw "Unsupported system: ${stdenv.hostPlatform.system}");
