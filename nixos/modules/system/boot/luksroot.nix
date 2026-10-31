@@ -223,18 +223,8 @@ in
 
                 preLVM = mkOption {
                   visible = false;
-                  apply =
-                    x:
-                    throw "The option `${
-                      lib.showOption [
-                        "boot"
-                        "initrd"
-                        "luks"
-                        "devices"
-                        name
-                        "preLVM"
-                      ]
-                    }' can no longer be used since it's been removed. Scripted stage 1 has been removed.";
+                  type = types.bool;
+                  default = false;
                 };
 
                 allowDiscards = mkOption {
@@ -308,29 +298,7 @@ in
           -> versionAtLeast kernelPackages.kernel.version "5.9";
         message = "boot.initrd.luks.devices.<name>.bypassWorkqueues is not supported for kernels older than 5.9";
       }
-    ]
-    ++ lib.mapAttrsToList (
-      name: opts:
-      let
-        opt = opts.configuration.options.preLVM;
-      in
-      {
-        assertion = !opt.isDefined;
-        message = ''
-          The option definition `${
-            lib.showOption [
-              "boot"
-              "initrd"
-              "luks"
-              "devices"
-              name
-              "preLVM"
-            ]
-          }' in ${lib.showFiles opt.files} no longer has any effect; please remove it.
-          Scripted stage 1 has been removed.
-        '';
-      }
-    ) options.boot.initrd.luks.devices.valueMeta.attrs;
+    ];
 
     # actually, sbp2 driver is the one enabling the DMA attack, but this needs to be tested
     boot.blacklistedKernelModules = optionals luks.mitigateDMAAttacks [
